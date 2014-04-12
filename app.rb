@@ -1,12 +1,27 @@
-# requires
 require 'sinatra'
 require 'csv'
-require 'active_record'
+require './state_data'
+require './csv_reader'
+require './cache'
+require 'json'
 
-ActiveRecord::Base.establish_connection(
-  :adapter => 'sqlite3',
-  :database =>  'app.sqlite3.db'
-)
-
-get '/state/:name' do
+def self.load_dataset
+  puts "running"
+  reader = CsvReader.new
+  reader.read
 end
+
+get '/' do
+  File.read(File.join('public', 'index.html'))
+end
+
+get '/api' do
+  content_type :json
+  {"params" => params}.to_json
+end
+
+
+configure do
+  self.load_dataset() if !Cache.is_loaded()
+end
+

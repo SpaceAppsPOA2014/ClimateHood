@@ -1,16 +1,11 @@
+require 'sinatra/activerecord/rake'
+require_relative 'app/app'
+
+
 require 'csv'
-require './state_data'
 
-
-ActiveRecord::Base.establish_connection(
-  :adapter => 'sqlite3',
-  :database =>  'app.sqlite3.db'
-)
-
-
-task :create_db do
-  sh "sqlite3 app.sqlite3.db < database/create.sql" 
-end
+require 'active_record'
+require 'sinatra/activerecord'
 
 task :import do
     csv_files = Dir["data/*.csv"]

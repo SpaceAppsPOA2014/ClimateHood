@@ -1,7 +1,9 @@
 source "http://rubygems.org"
 
 gem "sinatra"
-gem "json"
-gem "sqlite3"
-gem "unicorn"
+gem 'sinatra-contrib'
+gem 'sinatra-activerecord'
+gem 'sqlite3'
+gem 'json'
+gem 'unicorn'
 gem 'activerecord'
