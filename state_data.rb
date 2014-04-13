@@ -1,4 +1,4 @@
-require 'active_record'
+require 'active_support/all'
 
 class StateData
   attr_reader :state,

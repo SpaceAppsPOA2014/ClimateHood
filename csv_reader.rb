@@ -8,7 +8,7 @@ class CsvReader
         path = File.expand_path("../#{csv_file}", __FILE__)
         
         CSV.foreach(path) do |row|
-            state = csv_file.split('.')[0]
+            state = csv_file.split('.')[0].split('/')[1]
             year = row[0]
             month = row[1]
             min_temp_rcp45 = row[2]
