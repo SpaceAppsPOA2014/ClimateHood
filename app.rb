@@ -90,6 +90,10 @@ module ClimateHood
       set :public,  File.dirname(__FILE__)    + '/views'
     end
 
+    get '/css/normalize.css' do
+      content_type 'text/css', :charset => 'utf-8'
+      scss :'stylesheets/normalize'
+    end
 
     get '/css/nv.d3.min.css' do
       content_type 'text/css', :charset => 'utf-8'
