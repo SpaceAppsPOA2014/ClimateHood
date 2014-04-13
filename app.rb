@@ -8,12 +8,14 @@ require 'slim'
 require 'sass'
 require 'compass'
 
-get '/' do
-  slim :index
-end
-
 module ClimateHood
+
   class App < Sinatra::Base
+
+    get '/' do
+      slim :index
+    end
+
     def self.load_dataset
       puts "running"
       reader = CsvReader.new
@@ -85,11 +87,19 @@ module ClimateHood
       end
 
       set :scss, Compass.sass_engine_options
+      set :public,  File.dirname(__FILE__)    + '/views'
     end
-  end
-end
 
-get '/main.css' do
-  content_type 'text/css', :charset => 'utf-8'
-  scss :'stylesheets/main'
+
+    get '/css/nv.d3.min.css' do
+      content_type 'text/css', :charset => 'utf-8'
+      scss :'stylesheets/nv.d3.min'
+    end
+
+    get '/main.css' do
+      content_type 'text/css', :charset => 'utf-8'
+      scss :'stylesheets/main'
+    end
+
+  end
 end
