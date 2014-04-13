@@ -49,20 +49,22 @@ header {
 
 .container {
   width: 960px;
+  text-align: center;
   margin: 20px auto;
 }
 
 .bucket {
   display: inline-block;
   text-align: center;
-  font-size: 1.2em;
+  min-width: 200px;
+  font-size: 1.4em;
   color: #FFF;
   border-radius: 2px;
   -webkit-border-radius: 2px;
   -webkit-box-shadow: 0px 0px 7px #D6D6D6;
   box-shadow: 0px 0px 7px #D6D6D6;
   overflow: hidden;
-  margin: 0 10px;
+  margin: 0 20px;
   .big {
     &:after {
       font-family: "artill_clean_weather_iconsRg";
@@ -89,7 +91,7 @@ header {
     }
   }
   h3, p {
-    padding: 10px;
+    padding: 15px;
   }
   p {
     background: #FFF;
