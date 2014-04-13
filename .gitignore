@@ -20,6 +20,9 @@ build/
 /doc/
 /rdoc/
 
+# Ignore Vim temp files.
+*.swp
+
 ## Environment normalisation:
 /.bundle/
 /lib/bundler/man/
