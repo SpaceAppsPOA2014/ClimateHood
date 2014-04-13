@@ -1,8 +1,110 @@
+
 body {
   background: #F3F3F3;
 }
 
-#home {
+header {
+  overflow: hidden;
+  text-align: center;
+  background: #FFF;
+  img {
+    width: 130px;
+  }
+}
+
+.container {
   width: 960px;
-  margin: 50px auto 0;
+  margin: 20px auto;
+}
+
+#form {
+  background: #414141;
+  padding: 10px;
+  color: #FFF;
+  border: 1px solid #FFF;
+  border-left: none;
+  border-right: none;
+}
+
+form {
+  p {
+    display: inline;
+  }
+  .select {
+    select {
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 10px;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      &:focus {
+        outline: none;
+        border-color: none;
+        background: none;
+      }
+    }
+    &:after {
+      font-family: 'FontAwesome';
+      content: "\f0d7";
+      padding-left: 10px;
+    }
+  }
+
+  input, textarea, .select, .time label {
+    display: initial;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #DDD;
+    padding: 5px;
+    margin: 0 5px;
+    color: #313131;
+    width: 100px;
+    &:focus {
+      outline: none;
+      border-color: #AAA;
+      background: #FAFAFA;
+    }
+  }
+
+  input[type="radio"] {
+    width: 0px;
+    height: 0px;
+    display: none;
+  }
+  .time { 
+    display: initial;
+    margin: 0 10px;
+    label {
+      display: inline-box;
+      vertical-align: middle;
+      *vertical-align: auto;
+      cursor: pointer;
+      margin-right: -5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      &:hover {
+        background: lighten(#2A84D2, 20%);
+        color: #FFF;
+      }
+      &:disabled {
+        cursor: default;
+        color: #b2b2b2;
+        border-color: #cccccc;
+        box-shadow: none;
+      }
+    }
+    input:checked + label, .segmented-button label.selected {
+      background: #2A84D2;
+      color: #FFF;
+    }
+    input:disabled + label {
+      background: #DDD;
+      cursor: default;
+      color: #b2b2b2;
+      border-color: #cccccc;
+    }
+  }
 }

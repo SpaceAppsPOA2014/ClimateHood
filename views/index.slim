@@ -7,42 +7,61 @@ html
     meta name="viewport" content="width=device-width"
     link rel="stylesheet" href="/css/normalize.css"
     link rel="stylesheet" href="/css/nv.d3.min.css"
-		link rel="stylesheet" href="main.css"
+    link rel="stylesheet" href="main.css"
+    link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"
   body
-      h1 ClimateHood
-      div id="home"
-      img src="imgs/climate-hood.png" alt="Climate Hood"
-      svg
+    header
+      .container
+        img src="images/logo.png" alt="Climate Hood"
+    section id="form"
+      .container
+        form
+          p
+            label value="Show me" Show me 
+            .select
+              select name="state" id="state"
+                - for state in us_states 
+                  option value="#{state}" #{state}
+          p
+            label From 
+            .select
+              select name="month" id="month"
+                option value="January" January
+                option value="January" January
+            .select
+              select name="year" id="year"
+                option value="2014" 2014
+            label to
+            .select
+              select name="duration" id="duration"
+                option value="5" 5
+                option value="10" 10
+                option value="15" 15
+                option value="20" 20
+          .time
+            | in the
+            input type="radio" name="time" value="Past" id="time-past"
+            label for="time-past" Past
+            input type="radio" name="time" value="Future" id="time-future" checked="checked"
+            label for="time-future" Future
+
+
+          input id="send" type="button" value="Show"
+
+    section id="home"
+      .container
+        svg
       script type="text/javascript" src="/js/d3.min.js"
       script type="text/javascript" src="/js/nv.d3.js"
       script type="text/javascript" src="/js/graphs.js"
       script type="text/javascript" src="/js/jquery-1.11.0.min.js" 
       script type="text/javascript" src="/js/main.js"
 
-      label value="Show me" Show me 
-      select name="state" id="state"
-        - for state in us_states 
-          option value="#{state}" #{state}
 
-      br
 
-      label From 
-      input name="month" id="month" placeholder="Month"
-      input name="year" id="year" placeholder="Year"
-
-      br
-
-      input name="duration" id="duration" placeholder="...years"
-      label in the
-      input name="time" id="time" placeholder="future"
-
-      br
-
-      input id="send" type="button" 
 
 
       div id="panel"
 
 
 
-      
