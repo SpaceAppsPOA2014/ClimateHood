@@ -15,8 +15,43 @@ header, .container {
   margin: 20px auto;
 }
 
+#form {
+  background: #414141;
+  padding: 10px;
+  color: #FFF;
+  border: 1px solid #FFF;
+  border-left: none;
+  border-right: none;
+}
+
 form {
-  input, textarea, select {
+  p {
+    display: inline;
+  }
+  .select {
+    select {
+      background: transparent;
+      border: none;
+      padding: 10px;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      &:focus {
+        outline: none;
+        border-color: none;
+        background: none;
+      }
+    }
+    &:after {
+      font-family: 'FontAwesome';
+      content: "\f0d7";
+      padding-left: 10px;
+    }
+  }
+
+  input, textarea, .select, .time label {
+    display: initial;
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid #DDD;
     padding: 5px;
@@ -25,7 +60,48 @@ form {
     width: 100px;
     &:focus {
       outline: none;
-      border-color: #CCC;
+      border-color: #AAA;
+      background: #FAFAFA;
+    }
+  }
+
+  input[type="radio"] {
+    width: 0px;
+    height: 0px;
+    display: none;
+  }
+  .time { 
+    display: initial;
+    margin: 0 10px;
+    label {
+      display: inline-box;
+      vertical-align: middle;
+      *vertical-align: auto;
+      cursor: pointer;
+      margin-right: -5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      &:hover {
+        background: lighten(#2A84D2, 20%);
+        color: #FFF;
+      }
+      &:disabled {
+        background: linear-gradient(#ffffff, #efefef);
+        cursor: default;
+        color: #b2b2b2;
+        border-color: #cccccc;
+        box-shadow: none;
+      }
+    }
+    input:checked + label, .segmented-button label.selected {
+      background: #2A84D2;
+      color: #FFF;
+    }
+    input:disabled + label {
+      background: #DDD;
+      cursor: default;
+      color: #b2b2b2;
+      border-color: #cccccc;
     }
   }
 }
