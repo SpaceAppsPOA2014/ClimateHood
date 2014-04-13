@@ -79,8 +79,17 @@ module ClimateHood
           d.state == state
       end
 
-      puts "the number of results is", result
-
+      result.each{|s|
+        puts s.year
+        puts s.month
+        puts s.min_temp_rcp45
+        puts s.max_temp_rcp45
+        puts s.precipitation_rcp45
+        puts s.min_temp_rcp85
+        puts s.max_temp_rcp85
+        puts s.precipitation_rcp85
+        puts ""
+      }
       result
     end
 
@@ -91,22 +100,20 @@ module ClimateHood
       duration = params[:duration]
 
       if !year || !month || !state || !duration
-        return status 400
+        halt 400, "Year(#{year}), month(#{month}), state(#{state}) and duration(#{duration}) are all required."
       end
 
       results = filter_by(state, year.to_i, month.to_i, duration.to_i)
-
-      puts "hello", results.count
       
       { 
-        min_temp_rcp45: results.min_by(&:min_temp_rcp45).min_temp_rcp45,
-        max_temp_rcp45: results.max_by(&:max_temp_rcp45).max_temp_rcp45,
-        min_precipitation_rcp45: results.min_by(&:precipitation_rcp45).precipitation_rcp45,
-        max_precipitation_rcp45: results.max_by(&:precipitation_rcp45).precipitation_rcp45,
-        min_temp_rcp85: results.min_by(&:min_temp_rcp85).min_temp_rcp85,
-        max_temp_rcp85: results.max_by(&:max_temp_rcp85).min_temp_rcp85,
-        min_precipitation_rcp85: results.min_by(&:precipitation_rcp85).precipitation_rcp85,
-        max_precipitation_rcp85: results.max_by(&:precipitation_rcp85).precipitation_rcp85
+        min_temp_rcp45: results.min_by{|x| x.min_temp_rcp45.to_f}.min_temp_rcp45,
+        max_temp_rcp45: results.max_by{|x| x.max_temp_rcp45.to_f}.max_temp_rcp45,
+        min_precipitation_rcp45: results.min_by{|x| x.precipitation_rcp45.to_f}.precipitation_rcp45,
+        max_precipitation_rcp45: results.max_by{|x| x.precipitation_rcp45.to_f}.precipitation_rcp45,
+        min_temp_rcp85: results.min_by{|x| x.min_temp_rcp85.to_f}.min_temp_rcp85,
+        max_temp_rcp85: results.max_by{|x| x.max_temp_rcp85.to_f}.min_temp_rcp85,
+        min_precipitation_rcp85: results.min_by{|x| x.precipitation_rcp85.to_f}.precipitation_rcp85,
+        max_precipitation_rcp85: results.max_by{|x| x.precipitation_rcp85.to_f}.precipitation_rcp85
       }.to_json
     end
 
