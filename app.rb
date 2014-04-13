@@ -19,21 +19,30 @@ module ClimateHood
 
     get '/api' do
       content_type :json
-      {"params" => params}.to_json
 
       year = params[:year]
       month = params[:month]
       state = params[:state]
       duration = params[:duration]
 
+      if !year || !month || !state || !duration
+        return status 400
+      end
+
+      result = filter_by(state, year.to_i, month.to_i, duration.to_i)
+
+      result.to_json
+    end
+
+    def filter_by(state, year, month, duration)
       result = Cache.data.select do |d|
         d.year >= year &&
-        d.year.to_i <= (year.to_i + duration.to_i) &&  
-        d.month.to_i >= month.to_i &&
+        d.year <= (year + duration) &&  
+        d.month >= month &&
         d.state == state
       end
 
-      result.to_json
+      result
     end
 
     configure do
