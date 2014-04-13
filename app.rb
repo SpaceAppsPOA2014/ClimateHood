@@ -9,8 +9,25 @@ require 'sass'
 require 'compass'
 
 module ClimateHood
+  class CssHandler < Sinatra::Base
+    get '/css/normalize.css' do
+      content_type 'text/css', :charset => 'utf-8'
+      scss :'stylesheets/normalize'
+    end
+
+    get '/css/nv.d3.min.css' do
+      content_type 'text/css', :charset => 'utf-8'
+      scss :'stylesheets/nv.d3.min'
+    end
+
+    get '/main.css' do
+      content_type 'text/css', :charset => 'utf-8'
+      scss :'stylesheets/main'
+    end
+  end
 
   class App < Sinatra::Base
+    use CssHandler
 
     get '/' do
       slim :index
@@ -87,23 +104,7 @@ module ClimateHood
       end
 
       set :scss, Compass.sass_engine_options
-      set :public,  File.dirname(__FILE__)    + '/views'
+      set :public_dir,  File.dirname(__FILE__)    + '/views'
     end
-
-    get '/css/normalize.css' do
-      content_type 'text/css', :charset => 'utf-8'
-      scss :'stylesheets/normalize'
-    end
-
-    get '/css/nv.d3.min.css' do
-      content_type 'text/css', :charset => 'utf-8'
-      scss :'stylesheets/nv.d3.min'
-    end
-
-    get '/main.css' do
-      content_type 'text/css', :charset => 'utf-8'
-      scss :'stylesheets/main'
-    end
-
   end
 end
