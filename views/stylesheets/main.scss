@@ -4,13 +4,15 @@ body {
 }
 
 header {
+  overflow: hidden;
   text-align: center;
+  background: #FFF;
   img {
     width: 130px;
   }
 }
 
-header, .container {
+.container {
   width: 960px;
   margin: 20px auto;
 }
@@ -30,6 +32,7 @@ form {
   }
   .select {
     select {
+      cursor: pointer;
       background: transparent;
       border: none;
       padding: 10px;
@@ -52,6 +55,7 @@ form {
 
   input, textarea, .select, .time label {
     display: initial;
+    cursor: pointer;
     background: rgba(255, 255, 255, 0.8);
     border: 1px solid #DDD;
     padding: 5px;
@@ -86,7 +90,6 @@ form {
         color: #FFF;
       }
       &:disabled {
-        background: linear-gradient(#ffffff, #efefef);
         cursor: default;
         color: #b2b2b2;
         border-color: #cccccc;

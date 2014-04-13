@@ -11,7 +11,8 @@ html
     link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"
   body
     header
-      img src="images/logo.png" alt="Climate Hood"
+      .container
+        img src="images/logo.png" alt="Climate Hood"
     section id="form"
       .container
         form
@@ -39,10 +40,11 @@ html
                 option value="20" 20
           .time
             | in the
-            input type="radio" name="time" value="Future" id="time-future"
-            label for="time-future" Future
             input type="radio" name="time" value="Past" id="time-past"
             label for="time-past" Past
+            input type="radio" name="time" value="Future" id="time-future" checked="checked"
+            label for="time-future" Future
+
 
           input id="send" type="button" value="Show"
 
