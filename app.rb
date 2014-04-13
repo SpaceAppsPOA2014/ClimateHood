@@ -115,7 +115,7 @@ module ClimateHood
 
       Compass.configuration do |config|
         config.project_path = File.dirname(__FILE__)
-        config.sass_dir = 'views/stylesheets'
+        config.sass_dir = :"stylesheets/"
       end
 
       set :scss, Compass.sass_engine_options

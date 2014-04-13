@@ -9,37 +9,37 @@ html
     link rel="stylesheet" href="/css/nv.d3.min.css"
 		link rel="stylesheet" href="main.css"
   body
-      h1 ClimateHood
-      div id="home"
-      img src="imgs/climate-hood.png" alt="Climate Hood"
-      svg
-      script type="text/javascript" src="/js/d3.min.js"
-      script type="text/javascript" src="/js/nv.d3.js"
-      script type="text/javascript" src="/js/graphs.js"
-      script type="text/javascript" src="/js/jquery-1.11.0.min.js" 
-      script type="text/javascript" src="/js/main.js"
+    header
+      img src="images/logo.png" alt="Climate Hood"
+    section id="form"
+      .container
+        form
+          p
+            label value="Show me" Show me 
+            select name="state" id="state"
+              - for state in us_states 
+                option value="#{state}" #{state}
+          p
+            label From 
+            input name="month" id="month" placeholder="Month"
+            input name="year" id="year" placeholder="Year"
+            label until
+            input name="duration" id="duration" placeholder="...years"
+            label in the
+            input name="time" id="time" placeholder="future"
+            input id="send" type="button" value="Show"
 
-      label value="Show me" Show me 
-      select name="state" id="state"
-        - for state in us_states 
-          option value="#{state}" #{state}
-
-      br
-
-      label From 
-      input name="month" id="month" placeholder="Month"
-      input name="year" id="year" placeholder="Year"
-
-      br
-
-      input name="duration" id="duration" placeholder="...years"
-      label in the
-      input name="time" id="time" placeholder="future"
-
-      br
-
-      input id="send" type="button" 
+    section id="graph"
+      .container
+        svg
+        script type="text/javascript" src="/js/d3.min.js"
+        script type="text/javascript" src="/js/nv.d3.js"
+        script type="text/javascript" src="/js/graphs.js"
+        script type="text/javascript" src="/js/jquery-1.11.0.min.js" 
+        script type="text/javascript" src="/js/main.js"
 
 
 
-      
+
+
+          
