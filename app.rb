@@ -45,7 +45,35 @@ module ClimateHood
           d.state == state
       end
 
+      puts "the number of results is", result
+
       result
+    end
+
+    get '/api/summary' do
+      year = params[:year]
+      month = params[:month]
+      state = params[:state]
+      duration = params[:duration]
+
+      if !year || !month || !state || !duration
+        return status 400
+      end
+
+      results = filter_by(state, year.to_i, month.to_i, duration.to_i)
+
+      puts "hello", results.count
+      
+      { 
+        min_temp_rcp45: results.min_by(&:min_temp_rcp45).min_temp_rcp45,
+        max_temp_rcp45: results.max_by(&:max_temp_rcp45).max_temp_rcp45,
+        min_precipitation_rcp45: results.min_by(&:precipitation_rcp45).precipitation_rcp45,
+        max_precipitation_rcp45: results.max_by(&:precipitation_rcp45).precipitation_rcp45,
+        min_temp_rcp85: results.min_by(&:min_temp_rcp85).min_temp_rcp85,
+        max_temp_rcp85: results.max_by(&:max_temp_rcp85).min_temp_rcp85,
+        min_precipitation_rcp85: results.min_by(&:precipitation_rcp85).precipitation_rcp85,
+        max_precipitation_rcp85: results.max_by(&:precipitation_rcp85).precipitation_rcp85
+      }.to_json
     end
 
     configure do
