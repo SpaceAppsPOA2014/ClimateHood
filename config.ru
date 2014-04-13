@@ -1,4 +1,3 @@
-require "rubygems"
-require "./app/app.rb"
+require "./app"
 
-run Sinatra::Application
+run ClimateHood::App
