@@ -56,6 +56,21 @@ module ClimateHood
       result.to_json
     end
 
+    def us_states
+      states = []
+      csv_files = Dir["data/*.csv"]
+
+      csv_files.each do |f|
+        path = File.expand_path("../#{f}", __FILE__)
+
+        state = f.split('.')[0].split('/')[1]
+
+        states << state
+      end
+
+      states
+    end
+
     def filter_by(state, year, month, duration)
       result = Cache.data.select do |d|
         d.year >= year &&
