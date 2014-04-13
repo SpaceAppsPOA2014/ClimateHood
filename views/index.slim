@@ -26,11 +26,9 @@ html
             label From 
             .select
               select name="month" id="month"
-                option value="January" January
-                option value="January" January
-            .select
-              select name="year" id="year"
-                option value="2014" 2014
+                - for month in months
+                  option value="#{month}" #{month}
+            input type="edit" id="year"
             label to
             .select
               select name="duration" id="duration"
@@ -56,10 +54,6 @@ html
       script type="text/javascript" src="/js/graphs.js"
       script type="text/javascript" src="/js/jquery-1.11.0.min.js" 
       script type="text/javascript" src="/js/main.js"
-
-
-
-
 
       div id="panel"
 

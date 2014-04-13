@@ -1,4 +1,4 @@
-function getInfo() {
+function getSummaryInfo() {
   var year = $("#year").val();
   var month = $("#month").val();
   var state = $("#state").val();
@@ -6,7 +6,18 @@ function getInfo() {
 
   $.get("/api/summary",
     {year: year, month: month, state: state, duration: duration},
-    processData);
+    processSummaryData);
+}
+
+function getGraphInfo() {
+  var year = $("#year").val();
+  var month = $("#month").val();
+  var state = $("#state").val();
+  var duration = $("#duration").val();
+
+  $.get("/api",
+      {year: year, month: month, state: state, duration: duration},
+      processGraphData);
 }
 
 function paragraph(text){
@@ -18,10 +29,9 @@ function paragraph(text){
     return t;
 }
 
-function processData(data){
+function processSummaryData(data){
     var panel = $("#panel");
     var d = JSON.parse(data);
-    alert(data);
     var maxTempRCP45 = parseFloat(d.max_temp_rcp45).toFixed(2);
     var maxTempRCP85 = parseFloat(d.max_temp_rcp85).toFixed(2);
 
@@ -29,9 +39,14 @@ function processData(data){
     panel.append("At the other hand, we can burn less coal and have confortable ", maxTempRCP45, " degrees.");
 }
 
+function processGraphData(data){
+  alert(data);
+}
+
 $(document).ready(function() { 
   $('#send').click(function() { 
-      getInfo();
+      getSummaryInfo();
+      getGraphInfo();
       return false;
   }); 
 

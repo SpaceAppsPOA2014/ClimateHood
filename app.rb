@@ -71,6 +71,11 @@ module ClimateHood
       states
     end
 
+    def months
+      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+       'October', 'November', 'December']
+    end
+
     def filter_by(state, year, month, duration)
       result = Cache.data.select do |d|
         d.year >= year &&
