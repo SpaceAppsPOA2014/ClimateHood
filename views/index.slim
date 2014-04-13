@@ -23,7 +23,7 @@ html
                 - for state in us_states 
                   option value="#{state}" #{state}
           p
-            label From 
+            label from 
             .select
               select name="month" id="month"
                 - for month in months
@@ -36,6 +36,7 @@ html
                 option value="10" 10
                 option value="15" 15
                 option value="20" 20
+            | years
           .time
             | in the
             input type="radio" name="time" value="Past" id="time-past"
@@ -43,10 +44,28 @@ html
             input type="radio" name="time" value="Future" id="time-future" checked="checked"
             label for="time-future" Future
 
-
           input id="send" type="button" value="Show"
+    
+    section id="buckets"
+      .container
+        h2 Extremes by month
+        .bucket.hottest
+          p January 2013
+          h3.big 
+            | 32
+            span º
+        .bucket.coldest
+          p June 2014
+          h3.big 
+            | -4
+            span º
+        .bucket.rain
+          p June 2014
+          h3.big 
+            | 12
+            span º
 
-    section id="home"
+    section id="home" class="graph"
       .container
         svg
       script type="text/javascript" src="/js/d3.min.js"
@@ -56,6 +75,3 @@ html
       script type="text/javascript" src="/js/main.js"
 
       div id="panel"
-
-
-
